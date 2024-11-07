@@ -1,0 +1,18 @@
+cc_test(
+    name = "IdGeneratorTest",
+    size = "small",
+    srcs = ["IdGeneratorTest.cc"],
+    deps = [
+        ":IdGenerator",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "IdGenerator",
+    srcs = [
+        "IdGenerator.cc",
+        "IdGenerator.h",
+    ],
+    visibility = ["//visibility:public"],
+)

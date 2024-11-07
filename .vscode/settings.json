@@ -1,0 +1,16 @@
+{
+  "C_Cpp.addNodeAddonIncludePaths": true,
+  "C_Cpp.clang_format_sortIncludes": true,
+  "C_Cpp.default.mergeConfigurations": true,
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "cpp-check-lint.cppcheck.--enable=": "",
+  "cpp-check-lint.cppcheck.--executable": "",
+  "cpp-check-lint.cppcheck.--std_c++=": "c++20",
+  "cpp-check-lint.cppcheck.--suppress=": [
+    "unmatchedSuppression",
+    "missingIncludeSystem",
+    "missingInclude"
+  ],
+  "cpp-check-lint.cpplint.--filter=": "-whitespace,-legal/copyright,-build/include_order",
+  "clangd.arguments": ["--compile-commands-dir=${workspaceFolder}"]
+}

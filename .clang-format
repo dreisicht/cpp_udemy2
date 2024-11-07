@@ -1,0 +1,13 @@
+BasedOnStyle: Google
+SortIncludes: true
+IncludeBlocks: Regroup
+IncludeCategories:
+  # Headers without extension.
+  - Regex: '<([A-Za-z0-9\Q/-_\E])+>'
+    Priority: 2
+  # Headers with extension.
+  - Regex: '<([A-Za-z0-9\Q/-_\E])+.h.*>'
+    Priority: 3
+  - Regex: '"([A-Za-z0-9.\Q/-_\E])+"'
+    Priority: 5
+RemoveBracesLLVM: true

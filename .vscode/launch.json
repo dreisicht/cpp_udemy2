@@ -1,0 +1,87 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    // Default for now.
+    {
+      "name": "Bazel Debug",
+      "preLaunchTask": "Build current Bazel file (debug)",
+      "type": "cppdbg",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/bazel-out/k8-dbg/bin/${relativeFileDirname}/${fileBasenameNoExtension}",
+      "args": [],
+      "stopAtEntry": false,
+      "MIMode": "gdb",
+      "targetArchitecture": "amd64",
+      "miDebuggerPath": "gdb",
+      "launchCompleteCommand": "exec-run",
+      "sourceFileMap": {
+        "${workspaceFolder}/bazel-${workspaceFolderBasename}": "${workspaceFolder}"
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": false
+        }
+      ]
+    }
+    // {
+    //   "name": "//src:main",
+    //   "type": "cppdbg",
+    //   "request": "launch",
+    //   "program": "//src:main",
+    //   "args": [""],
+    //   "stopAtEntry": false,
+    //   "cwd": "/home/peter/simple_project",
+    //   "sourceFileMap": {
+    //     "/proc/self/cwd": "/home/peter/simple_project"
+    //   },
+    //   "externalConsole": false,
+    //   "targetArchitecture": "x64",
+    //   "customLaunchSetupCommands": [
+    //     {
+    //       "description": "",
+    //       "text": "-file-exec-and-symbols /home/peter/simple_project/bazel-out/k8-fastbuild/bin/src/main",
+    //       "ignoreFailures": false
+    //     }
+    //   ],
+    //   "setupCommands": [
+    //     {
+    //       "description": "Enable pretty-printing for gdb",
+    //       "text": "-enable-pretty-printing",
+    //       "ignoreFailures": true
+    //     }
+    //   ],
+    //   "pipeTransport": {
+    //     "pipeCwd": "/home/peter/simple_project",
+    //     "pipeProgram": "/home/peter/simple_project/.vscode/bazel_debug.sh",
+    //     "pipeArgs": ["  //src:main -- \\$@"],
+    //     "debuggerPath": ".",
+    //     "quoteArgs": false
+    //   },
+    //   "logging": {
+    //     "programOutput": true
+    //   },
+    //   "internalConsoleOptions": "openOnSessionStart"
+    // },
+    // {
+    //   "name": "/home/peter/simple_project/bazel-out/k8-fastbuild/bin/src/main",
+    //   "type": "cppdbg",
+    //   "request": "launch",
+    //   "program": "/home/peter/simple_project/bazel-out/k8-fastbuild/bin/src/main",
+    //   "stopAtEntry": false,
+    //   "cwd": "/home/peter/simple_project",
+    //   "environment": [],
+    //   "externalConsole": false,
+    //   "MIMode": "gdb",
+    //   "setupCommands": [
+    //     {
+    //       "description": "Enable pretty-printing for gdb",
+    //       "text": "-enable-pretty-printing",
+    //       "ignoreFailures": true
+    //     }
+    //   ]
+    // },
+  ]
+}

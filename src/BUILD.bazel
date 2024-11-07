@@ -1,0 +1,23 @@
+cc_binary(
+    name = "main",
+    srcs = ["main.cc"],
+    deps = ["fibonacci"],
+)
+
+cc_library(
+    name = "fibonacci",
+    srcs = [
+        "fibonacci.cc",
+        "fibonacci.h",
+    ],
+)
+
+cc_test(
+    name = "simple_test",
+    size = "small",
+    srcs = ["simple_test.cc"],
+    deps = [
+        "fibonacci",
+        "@com_google_googletest//:gtest_main",
+    ],
+)

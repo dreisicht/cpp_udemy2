@@ -1,5 +1,6 @@
 cc_binary(
     name = "playground",
     srcs = ["playground.cc"],
+    defines = ["ASDF"],
     deps = [],
 )

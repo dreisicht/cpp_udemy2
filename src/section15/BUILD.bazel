@@ -1,0 +1,72 @@
+cc_library(
+    name = "Account",
+    srcs = [
+        "Account.cc",
+        "//src/id_generator:IdGenerator",
+    ],
+    hdrs = ["Account.h"],
+    deps = ["//src/id_generator:IdGenerator"],
+)
+
+cc_library(
+    name = "AccountFixedSeed",
+    srcs = [
+        "Account.cc",
+        "//src/id_generator:IdGenerator",
+    ],
+    hdrs = ["Account.h"],
+    defines = ["FIXED_SEED"],
+    deps = ["//src/id_generator:IdGenerator"],
+)
+
+cc_test(
+    name = "AccountTest",
+    size = "small",
+    srcs = ["AccountTest.cc"],
+    defines = ["FIXED_SEED"],
+    deps = [
+        ":AccountFixedSeed",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "AccountRandomTest",
+    size = "small",
+    srcs = ["AccountRandomTest.cc"],
+    # args = ["--gtest_repeat=5"],
+    deps = [
+        ":Account",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "Account_Util",
+    srcs = ["Account_Util.cc"],
+    hdrs = ["Account_Util.h"],
+    deps = [
+        ":Account",
+        ":Savings_Account",
+    ],
+)
+
+cc_library(
+    name = "Savings_Account",
+    srcs = [
+        "Savings_Account.cc",
+        "//src/id_generator:IdGenerator",
+    ],
+    hdrs = ["Savings_Account.h"],
+    deps = [":Account"],
+)
+
+cc_binary(
+    name = "section15",
+    srcs = ["section15.cc"],
+    deps = [
+        ":Account",
+        # ":Account_Util",
+        # "//src/id_generator:IdGenerator",
+    ],
+)

@@ -3,5 +3,4 @@ build --action_env=BAZEL_CXXOPTS="-std=c++20"
 build --copt=-fdiagnostics-color=always
 run --copt=-fdiagnostics-color=always
 
-# Enable test result streaming
 test --test_output=streamed

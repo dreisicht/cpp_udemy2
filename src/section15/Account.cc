@@ -1,7 +1,12 @@
 #include "Account.h"
 
+#include <iostream>
+#include <memory>
+#include <string>
+#include <unordered_set>
+
 std::shared_ptr<IdGenerator> Account::idg_;
-std::shared_ptr<std::set<std::string>> Account::m_uids;
+std::shared_ptr<std::unordered_set<std::string>> Account::m_uids;
 
 Account::Account() : Account::Account("Unnamed Account", 0.0) {}
 
@@ -20,18 +25,20 @@ Account::Account(const std::string &name, const double &balance)
   std::cout << "NFS" << std::endl;
   m_uid = idg_->generate(ID_SIZE);
 #endif
-
-  if (!m_uids) m_uids = std::make_shared<std::set<std::string>>();
+  // Creating a shared pointer between all instances to check if the ID is
+  // already in use in any of the instances.
+  if (!m_uids) m_uids = std::make_shared<std::unordered_set<std::string>>();
   // Check if the ID is already existing, since e.g. fixed seeds may lead to the
   // fact that the ID is already existing.
-  if (!m_uids->contains(m_uid)) {
+  if (m_uids->find(m_uid) == m_uids->end()) {
     m_uids->insert(m_uid);
     return;
-  }
-// Error that key already exists, but only not in testing mode.
+  } else {
+// Error that key already exists, but only in non-testing mode.
 #ifndef FIXED_SEED
-  throw std::invalid_argument("ID already existing: " + m_uid);
+    throw std::invalid_argument("ID already existing: " + m_uid);
 #endif
+  }
 }
 
 bool Account::deposit(const double &amount) {

@@ -3,13 +3,14 @@
 // #include "Account_Util.h"
 // #include "Savings_Account.h"
 // #include "src/id_generator/IdGenerator.h"
+
 #include "src/section15/Account.h"
 
 int main() {
   // std::cout.precision(2);
   // std::cout << std::fixed;
   Account acc{};
-  // std::cout << acc.idg_->generate(10, 0) << std::endl;
+  std::cout << acc.idg_->generate(10, 0) << std::endl;
 
   // Accounts
   // std::vector<Account> accounts;

@@ -34,7 +34,6 @@ cc_test(
     name = "AccountRandomTest",
     size = "small",
     srcs = ["AccountRandomTest.cc"],
-    # args = ["--gtest_repeat=5"],
     deps = [
         ":Account",
         "@com_google_googletest//:gtest_main",

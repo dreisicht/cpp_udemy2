@@ -1,3 +1,10 @@
+cc_library(
+    name = "IdGenerator",
+    srcs = ["IdGenerator.cc"],
+    hdrs = ["IdGenerator.h"],
+    visibility = ["//visibility:public"],
+)
+
 cc_test(
     name = "IdGeneratorTest",
     size = "small",
@@ -6,13 +13,4 @@ cc_test(
         ":IdGenerator",
         "@com_google_googletest//:gtest_main",
     ],
-)
-
-cc_library(
-    name = "IdGenerator",
-    srcs = [
-        "IdGenerator.cc",
-        "IdGenerator.h",
-    ],
-    visibility = ["//visibility:public"],
 )

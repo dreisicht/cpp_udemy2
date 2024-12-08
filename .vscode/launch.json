@@ -3,12 +3,12 @@
   "configurations": [
     // Default for now.
     {
-      "name": "Bazel Debug",
+      "name": "Bazel Debug (Linux)",
       "preLaunchTask": "Build current Bazel file (debug)",
       "type": "cppdbg",
       "request": "launch",
-      "cwd": "${workspaceRoot}",
-      "program": "${workspaceRoot}/bazel-out/k8-dbg/bin/${relativeFileDirname}/${fileBasenameNoExtension}",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}",
       "args": [],
       "stopAtEntry": false,
       "MIMode": "gdb",
@@ -25,6 +25,23 @@
           "ignoreFailures": false
         }
       ]
+    },
+    {
+      "name": "Bazel debug with lldb (MacOS)",
+      "type": "cppdbg",
+      "request": "launch",
+      "targetArchitecture": "arm64",
+      "program": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}",
+      "args": [],
+      "preLaunchTask": "Build current Bazel file (debug)",
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb",
+      "sourceFileMap": {
+        "${workspaceFolder}": "${workspaceFolder}"
+      }
     }
     // {
     //   "name": "//src:main",
